@@ -1,4 +1,5 @@
 import { useReducer, useState } from "react";
+import "./App.css";
 
 const initialTodos = [];
 
@@ -14,12 +15,12 @@ function reducer(todos, action) {
 }
 
 export default function App() {
-  const [todos, setTodos] = useReducer(reducer, initialTodos);
+  const [todos, dispatch] = useReducer(reducer, initialTodos);
   const [text, setText] = useState("");
 
   const handleAdd = () => {
     if (text.trim() === "") return;
-    setTodos({ type: "ADD", text });
+    dispatch({ type: "ADD", text });
     setText("");
   };
 
@@ -37,7 +38,7 @@ export default function App() {
         {todos.map((todo) => (
           <li key={todo.id}>
             {todo.text}{" "}
-            <button onClick={() => setTodos({ type: "REMOVE", id: todo.id })}>
+            <button onClick={() => dispatch({ type: "REMOVE", id: todo.id })}>
               삭제
             </button>
           </li>
@@ -46,3 +47,4 @@ export default function App() {
     </div>
   );
 }
+``;

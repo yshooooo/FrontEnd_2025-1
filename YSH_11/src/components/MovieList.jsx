@@ -7,7 +7,7 @@ export default function MovieList({ movies, onSelect }) {
         <div className="card" key={movie.id} onClick={() => onSelect(movie)}>
           <img src={IMG_URL + movie.poster_path} alt={movie.title} />
           <h3>{movie.title}</h3>
-          <p>⭐ {movie.vote_average}</p>
+          <p>⭐ {movie.vote_average.toFixed(2)}</p>
         </div>
       ))}
     </div>
